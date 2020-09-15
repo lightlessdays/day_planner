@@ -4,7 +4,7 @@
   font-family: 'Noto Sans', sans-serif;
   font-size: 13px;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .title {
   font-family: 'Ubuntu', sans-serif;
   margin-bottom: 0;
 }
@@ -60,6 +60,7 @@ main {
 /* timeblocks */
 #timeblocks {
   z-index: 5;
+  margin-bottom: 60px;
 }
 .time-block {
   border-radius: 5px;
@@ -70,10 +71,10 @@ main {
   z-index: 8;
 }
 .time-block:hover {
-  border-width: 2px;
+  border-left-width: 10px;
 }
 .past {
-  background-color: #e0e0e0;
+  background-color: #f3f3f3;
   border: 1px solid #aaaaaa;
 }
 .present {
@@ -86,6 +87,7 @@ main {
 }
 .empty {
   background-color: #fff;
+  border-width: 2px;
 }
 /* current time line */
 #current-time {
@@ -110,4 +112,10 @@ main {
   border-top: 16px solid transparent;
   border-bottom: 16px solid transparent;
   border-right: 27px solid #587EFB;
+}
+/* timeblock input */
+input {
+  border: none;
+  width: 80%;
+  margin: 0 10%;
 }

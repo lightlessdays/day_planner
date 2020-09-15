@@ -49,7 +49,7 @@
     </div>
     <div class="grid-container">
       <p class="side-time">10AM</p>
-      <div id="9" class="time-block past" value="9">
+      <div id="9" class="time-block empty" value="9">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -57,7 +57,7 @@
     <!-- timeblock 10am -->
     <div class="grid-container">
       <p class="side-time">11AM</p>
-      <div id="10" class="time-block present" value="10">
+      <div id="10" class="time-block empty" value="10">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -65,7 +65,7 @@
     <!-- timeblock 11am -->
     <div class="grid-container">
       <p class="side-time">12PM</p>
-      <div id="11" class="time-block future" value="11">
+      <div id="11" class="time-block empty" value="11">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -73,7 +73,7 @@
     <!-- timeblock 12pm -->
     <div class="grid-container">
       <p class="side-time">1PM</p>
-      <div id="12" class="time-block future empty" value="12">
+      <div id="12" class="time-block empty" value="12">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -81,7 +81,7 @@
     <!-- timeblock 1pm -->
     <div class="grid-container">
       <p class="side-time">2PM</p>
-      <div id="13" class="time-block future empty" value="13">
+      <div id="13" class="time-block empty" value="13">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -89,7 +89,7 @@
     <!-- timeblock 2pm -->
     <div class="grid-container">
       <p class="side-time">3PM</p>
-      <div id="14" class="time-block future empty" value="14">
+      <div id="14" class="time-block empty" value="14">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -97,7 +97,7 @@
     <!-- timeblock 3pm -->
     <div class="grid-container">
       <p class="side-time">4PM</p>
-      <div id="15" class="time-block future empty" value="15">
+      <div id="15" class="time-block empty" value="15" name="3PM - 4PM">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -105,7 +105,7 @@
     <!-- timeblock 4pm -->
     <div class="grid-container">
       <p class="side-time">5PM</p>
-      <div id="16" class="time-block future empty" value="16">
+      <div id="16" class="time-block empty" value="16">
         <h4 class="title"></h4>
         <p class="description"></p>
       </div>
@@ -114,6 +114,18 @@
 </div> <!-- end of timeblock div -->
 
 <!-- timeblock form -->
+<div id="text-form" style="display: none;">
+  <i id="close">X</i>
+  <button type="submit" id="save">SAVE</button>
+  <h3 id="form-time"></h3>
+  <form id="myform">
+    <hr class="line">
+    <input type="text" name="10-title" class="title"/>
+    <hr class="line">
+    <input type="text" name="10-description" class="text"/>
+    <hr class="line">
+  </form>
+</div>
 </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
