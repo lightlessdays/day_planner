@@ -25,90 +25,20 @@ if (hour < 9){
 if (hour > 16){
     $('.time-block').removeClass("present future").addClass("past");
 }
-switch (hour){
-    case 9:
-        $('#9').removeClass("past future").addClass("present");
-        $('#10').removeClass("past present").addClass("future");
-        $('#11').removeClass("past present").addClass("future");
-        $('#12').removeClass("past present").addClass("future");
-        $('#13').removeClass("past present").addClass("future");
-        $('#14').removeClass("past present").addClass("future");
-        $('#15').removeClass("past present").addClass("future");
-        $('#16').removeClass("past present").addClass("future");
-        break;
-    case 10:
-        $('#9').removeClass("present future").addClass("past");
-        $('#10').removeClass("past future").addClass("present");
-        $('#11').removeClass("past present").addClass("future");
-        $('#12').removeClass("past present").addClass("future");
-        $('#13').removeClass("past present").addClass("future");   
-        $('#14').removeClass("past present").addClass("future");
-        $('#15').removeClass("past present").addClass("future");
-        $('#16').removeClass("past present").addClass("future");
-        break;
-    case 11:
-        $('#9').removeClass("present future").addClass("past");
-        $('#10').removeClass("present future").addClass("past");
-        $('#11').removeClass("past future").addClass("present");
-        $('#12').removeClass("past present").addClass("future");
-        $('#13').removeClass("past present").addClass("future");   
-        $('#14').removeClass("past present").addClass("future");
-        $('#15').removeClass("past present").addClass("future");
-        $('#16').removeClass("past present").addClass("future");
-        break;
-        case 12:
-        $('#9').removeClass("present future").addClass("past");
-        $('#10').removeClass("present future").addClass("past");
-        $('#11').removeClass("present future").addClass("past");
-        $('#12').removeClass("past future").addClass("present");
-        $('#13').removeClass("past present").addClass("future");   
-        $('#14').removeClass("past present").addClass("future");
-        $('#15').removeClass("past present").addClass("future");
-        $('#16').removeClass("past present").addClass("future");
-        break;
-        case 13:
-        $('#9').removeClass("present future").addClass("past");
-        $('#10').removeClass("present future").addClass("past");
-        $('#11').removeClass("present future").addClass("past");
-        $('#12').removeClass("present future").addClass("past");
-        $('#13').removeClass("past future").addClass("present");  
-        $('#14').removeClass("past present").addClass("future");
-        $('#15').removeClass("past present").addClass("future");
-        $('#16').removeClass("past present").addClass("future");
-        break;
-        case 14:
-        $('#9').removeClass("present future").addClass("past");
-        $('#10').removeClass("present future").addClass("past");
-        $('#11').removeClass("present future").addClass("past");
-        $('#12').removeClass("present future").addClass("past");
-        $('#13').removeClass("present future").addClass("past"); 
-        $('#14').removeClass("past future").addClass("present");
-        $('#15').removeClass("past present").addClass("future");
-        $('#16').removeClass("past present").addClass("future");
-        break;
-        case 15:
-        $('#9').removeClass("present future").addClass("past");
-        $('#10').removeClass("present future").addClass("past");
-        $('#11').removeClass("present future").addClass("past");
-        $('#12').removeClass("present future").addClass("past");
-        $('#13').removeClass("present future").addClass("past"); 
-        $('#14').removeClass("present future").addClass("past");
-        $('#15').removeClass("past future").addClass("present");
-        $('#16').removeClass("past present").addClass("future");
-        break;
-        case 16:
-        $('#9').removeClass("present future").addClass("past");
-        $('#10').removeClass("present future").addClass("past");
-        $('#11').removeClass("present future").addClass("past");
-        $('#12').removeClass("present future").addClass("past");
-        $('#13').removeClass("present future").addClass("past"); 
-        $('#14').removeClass("present future").addClass("past");
-        $('#15').removeClass("present future").addClass("past");
-        $('#16').removeClass("past future").addClass("present");
-        break;
-        default:
-            break;
-}
+$( "div.time-block" ).each(function() {
+    var timeblockNum = parseInt($( this ).data("value"));
+    if (hour < timeblockNum){
+        $( this ).removeClass("past present").addClass("future");
+    }
+    if (hour == timeblockNum){
+        $( this ).removeClass("past future").addClass("present");
+    }
+    if (hour > timeblockNum){
+        $( this ).removeClass("present future").addClass("past");
+    }
+    
+  });
+
 // current time display
 if (hour > 17 || hour < 9){
     $('#current-time').css("display", "none");
@@ -131,9 +61,12 @@ function addText(){
     // display form
     $('#text-form').css('display', 'block');
 
-    $('#form-time').text(this.name);
+    $('#form-time').text(this.data("time"));
 }
 
 $('.time-block').on("click", function(){
     addText();
+
+
+
 });
