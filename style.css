@@ -139,6 +139,11 @@ input:focus {
   width: 100%;
   border-radius: 5px;
 }
+#form-time {
+  margin-top: 15px;
+  color: #666666;
+  font-weight: 400;
+}
 #save {
   padding: 5px 10px;
   border-radius: 2px;
