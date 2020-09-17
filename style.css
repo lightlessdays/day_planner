@@ -89,6 +89,12 @@ main {
   background-color: #fff;
   border-width: 2px;
 }
+.title, .description {
+  margin: 0 25px 8px 25px;
+}
+.title {
+  margin-top: 20px;
+}
 /* current time line */
 #current-time {
   position: relative;

@@ -48,8 +48,10 @@ if (hour > 17 || hour < 9){
 // current time line position
 var position = ((hour * 100) - 802) + (minutes * 1.65);
  $('#current-time').css('top', position+'px');
+
 }, 100);
 
+// timeblocks object
 var blocks = {
     block9: {
         time: "9AM - 10AM",
@@ -93,51 +95,80 @@ var blocks = {
     }
 };
 
-console.log(blocks);
+var storageKey = localStorage.getItem("storageKey");
+init();
 
+function renderBlocks(){
+    $( "div.time-block" ).each(function() {
+        var timeblockNum = $( this ).attr("data-value");
+        console.log(timeblockNum);
+        console.log(this);
+        $( this ).append($("<h4 class='title'>"+blocks["block"+timeblockNum].title+"</h4>"));
+        $( this ).append($("<p class='description'>"+blocks["block"+timeblockNum].description+"</p>"));
+        if (blocks["block"+timeblockNum].title!==""||blocks["block"+timeblockNum].description!==""){
+            $( this ).removeClass("empty");
+        }
+    });
+};
 
+function init() {
+    // Write code here to check if there are todos in localStorage
+    // If so, parse the value from localStorage and assign it to the todos variable
+    if(storageKey===null){
+        console.log("nothing in storage");
+    } else {
+        blocks = JSON.parse(localStorage.getItem("storageKey"));
+    }
+    // Render todos to the DOM
+    renderBlocks();
+};
 
+function storeBlocks() {
+    // Add code here to stringify the todos array and save it to the "todos" key in localStorage
+    localStorage.setItem("storageKey", JSON.stringify(blocks));
+};
+
+// declare variables for functions
+var timeblockthis;
+var blockNum;
+
+// display form and info for selected time block
 function addText(timeblockdiv){
     // display form
     $('#text-form').css('display', 'block');
-    console.log(timeblockdiv);
-    console.log($( timeblockdiv ).attr("data-value"));
-    console.log(blocks.block9);
-    // console.log(blocks.block9.time);
-        switch ( $( timeblockdiv ).attr("data-value")){
-                case "9":
-                    $('#form-time').text(blocks.block9.time);
-                    break;
-                case "10":
-                    $('#form-time').text(blocks.block10.time);
-                    break;
-                case "11":
-                    $('#form-time').text(blocks.block11.time);
-                    break;
-                case "12":
-                    $('#form-time').text(blocks.block12.time);
-                    break;
-                case "13":
-                    $('#form-time').text(blocks.block13.time);
-                    break;
-                case "14":
-                    $('#form-time').text(blocks.block14.time);
-                    break;
-                case "15":
-                    $('#form-time').text(blocks.block15.time);
-                    break;
-                case "16":
-                    $('#form-time').text(blocks.block16.time);
-                    break;
-            default:
-                break;
-        }
+    
+    blockNum = ( $( timeblockdiv ).attr("data-value")).toString();
+        
+    $('#form-time').text(blocks["block"+blockNum].time);
+    $('#title').val(blocks["block"+blockNum].title);
+    $('#description').val(blocks["block"+blockNum].description) ;       
 };
 
+
+// timeblock on click display form
 $('.time-block').on("click", function(){
     addText(this);
-
+    timeblockthis = $( this );
 });
 
+// close button
+$('#close').on("click", function(){
+    $('#text-form').css('display', 'none');
+});
 
-}); // document ready
+// save button
+$('#save').on("click", function(event){
+    event.preventDefault();
+    
+    // get values from form and add to blocks object
+    blocks["block"+blockNum].title = $('#title').val();
+    blocks["block"+blockNum].description = $('#description').val();
+    
+    storeBlocks();
+    renderBlocks();
+    
+    // close form pop up
+    $('#text-form').css('display', 'none');
+});
+
+}); // end document ready
