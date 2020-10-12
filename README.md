@@ -1,4 +1,4 @@
-# wk5_day_planner
+# Day Planner
 ## Overview
  This is a website that uses jquery, moment.js and local storage to create a day planner.
  ![screenshot of main page](./screenshots/desktop.jpg)
